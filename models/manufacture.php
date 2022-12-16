@@ -7,6 +7,18 @@ class Manufacture extends Db{
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function checkProductsInManu($manu_id){
+        $sql = self::$connection->prepare("SELECT *
+        FROM `products`
+        WHERE EXISTS
+        (SELECT * FROM `manufactures` WHERE `products`.manu_id = `manufactures`.`manu_id`
+         AND `manufactures`.`manu_id` = ?)");
+        $sql->bind_param("i",$manu_id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
     public function addManu($manu_name,$manu_image)
     {
         $sql = self::$connection->prepare("INSERT INTO `manufactures`(`manu_name`, `manu_image`) 

@@ -7,6 +7,14 @@ class Protype extends Db{
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function getProtypeByTypeId($type_id){
+        $sql = self::$connection->prepare("SELECT * FROM protypes WHERE `type_id` = ?");
+        $sql->bind_param("i",$type_id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
     public function delType($type_id)
     {
         $sql = self::$connection->prepare("DELETE FROM `protypes` WHERE `type_id` = ?");
@@ -20,7 +28,7 @@ class Protype extends Db{
         $sql->bind_param("ss",$type_name,$type_image);
         return $sql->execute(); //return an object
     }
-    public function editType($type_name,$type_image,$type_id)
+    public function editProtype($type_name,$type_image,$type_id)
     {
         if($type_image != ""){
             $sql = self::$connection->prepare("UPDATE `protypes` 

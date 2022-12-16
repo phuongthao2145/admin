@@ -1,9 +1,9 @@
 <?php
 include "header.php";
 include "sidebar.php";
-if(isset($_GET['manu_id'])):
-  $manu_id = $_GET['manu_id'];
-  $p = $manufacture->getManuByManuId($manu_id);
+if(isset($_GET['type_id'])):
+  $type_id = $_GET['type_id'];
+  $p = $protype->getProtypeByTypeId($type_id);
   //var_dump($p);
 ?>
   <!-- Content Wrapper. Contains page content -->
@@ -13,12 +13,12 @@ if(isset($_GET['manu_id'])):
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Product Edit</h1>
+            <h1>Protype Edit</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Manu Edit</li>
+              <li class="breadcrumb-item active">Protype Edit</li>
             </ol>
           </div>
         </div>
@@ -33,13 +33,13 @@ if(isset($_GET['manu_id'])):
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Name</label>
-                <input type="hidden" name="manu_id" value="<?php echo $p[0]['manu_id'] ?>">
-                <input value="<?php echo $p[0]['manu_name'] ?>" name="manu_name" type="text" id="inputName" class="form-control">
+                <input type="hidden" name="type_id" value="<?php echo $p[0]['type_id'] ?>">
+                <input value="<?php echo $p[0]['type_name'] ?>" name="type_name" type="text" id="inputName" class="form-control">
               </div>
               <div class="form-group">
                 <label for="inputName">Image</label>
-                <input onchange="preview(this)" name="manu_image" type="file" id="inputName" class="form-control">
-                <img id="imagepreview" style="width:150px" src="dist/img/<?php echo $p[0]['manu_image'] ?>" alt="">
+                <input onchange="preview(this)" name="type_image" type="file" id="inputName" class="form-control">
+                <img id="imagepreview" style="width:150px" src="dist/img/<?php echo $p[0]['type_image'] ?>" alt="">
               </div>
             </div>
             <!-- /.card-body -->
@@ -49,7 +49,7 @@ if(isset($_GET['manu_id'])):
       </div>
       <div class="row">
         <div class="col-12">
-          <input type="submit" value="Update Manu" class="btn btn-success float-right">
+          <input type="submit" value="Update Type" class="btn btn-success float-right">
         </div>
       </div>
 </form>

@@ -35,4 +35,16 @@ elseif(isset($_POST['manu_id'])){
      move_uploaded_file($_FILES["manu_image"]["tmp_name"], $target_file);
      header('location:manufacture.php');
 }
-
+elseif(isset($_POST['type_id'])){
+    $protype = new Protype;
+    $type_name = $_POST['type_name'];
+    $type_image = $_FILES['type_image']['name'];
+    $type_id = $_POST['type_id'];
+     //xu ly cap nhat
+     $protype->editProtype($type_name,$type_image,$type_id);
+     //xu ly upload hinh
+     $target_dir = "dist/img/";
+     $target_file = $target_dir . basename($_FILES["type_image"]["name"]);
+     move_uploaded_file($_FILES["type_image"]["tmp_name"], $target_file);
+     header('location:protype.php');
+}

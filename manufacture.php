@@ -1,4 +1,5 @@
 <?php
+setcookie('error');
 include "header.php";
 include "sidebar.php";
 ?>
